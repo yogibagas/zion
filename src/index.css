@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @apply overflow-x-hidden !important;
+}
+.App{
+
+  @apply overflow-x-hidden !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.behind-text {
+  @apply max-w-2xl;
+  position: relative;
+  top: 5%;
+  font-size: 9em;
+  /* transform: translate(-50%, -50%); */
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 32px;
+  position:absolute
+ 
+}
+.behind-text.fill {
+  color: rgba(0, 0, 0, 0.2);
+  position:absolute;
+}
+.behind-text.outline-text {
+  z-index: 2;
+  color: #fff;
+  padding:5px 15px;
+  text-shadow:
+     1px 1px 0 #000,
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
+}
+.shadow-text{
+  text-shadow:1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.effects{
+  transition: all 1000ms cubic-bezier(1, 0, 0.115, 0.995);
+  -webkit-transition: all 1000ms cubic-bezier(1, 0, 0.115, 0.995);
+  -moz-transition: all 1000ms cubic-bezier(1, 0, 0.115, 0.995);
+  -o-transition: all 1000ms cubic-bezier(1, 0, 0.115, 0.995);
+  transform: rotateZ(90deg) translateX(0);
+  -moz-transform: rotateZ(90deg) translateX(0);
+  -webkit-transform: rotateZ(90deg) translateX(0);
+  -o-transform: rotateZ(90deg) translateX(0);
+  -ms-transform: rotateZ(90deg) translateX(0);
+  transform-origin: 100% 100%;
+  -webkit-transform-origin: 100% 100%;
+  -o-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+}
+.effects.active{
+  transform: translateY(0%);
+  -moz-transform: translateY(0%);
+  -webkit-transform: translateY(0%);
+  -o-transform: translateY(0%);
+  -ms-transform: translateY(0%);
+}
+
+.menu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  @apply space-y-4 mt-12
+}
+.menu li {
+  list-style: none;
+}
+.menu li::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 6em;
+  font-weight: 700;
+  pointer-events: none;
+  opacity: 0;
+  letter-spacing: 20px;
+  transition: 0.5s;
+  white-space: nowrap;
+}
+.menu li:hover::before {
+  opacity: .5;
+  letter-spacing: 5px;
+}
+.menu li a {
+  position: relative;
+  display: inline-block;
+  padding: 6px 15px;
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  overflow: hidden;
+  transition: 0.5s;
+  z-index: 1;
+  @apply text-5xl
+}
+.menu:hover li a {
+  opacity: 0.3;
+}
+.menu > li:hover > a {
+  transform: scale(1.4);
+  z-index: 1000;
+  opacity: 1;
+  @apply bg-gradient-to-r from-zion-blue to-zion-lightblue
+}
+.menu > li:hover > ul > li:hover a{
+  @apply  scale-125 opacity-100
+}
+.menu li a{
+  max-width:300px;
+  @apply flex;
+}
+.menu li a:hover::before {
+  left: calc(100% + 100px);
+  transition: 0.5s;
+  transition-delay: 0.2s;
+}
+@media screen and (max-width:768px){
+  .behind-text{
+    font-size:5em;
+  }
+}
+@tailwind utilities;
